@@ -1,10 +1,10 @@
-import React from 'react'
-import { Link } from 'gatsby'
-import { GatsbyImage } from 'gatsby-plugin-image'
+import React from "react"
+import { Link } from "gatsby"
+import { GatsbyImage } from "gatsby-plugin-image"
 
-import Container from './container'
-import Tags from './tags'
-import * as styles from './article-preview.module.css'
+import Container from "./container"
+import Tags from "./tags"
+import * as styles from "./article-preview.module.css"
 
 const ArticlePreview = ({ posts }) => {
   if (!posts) return null
@@ -13,7 +13,7 @@ const ArticlePreview = ({ posts }) => {
   return (
     <Container>
       <ul className={styles.articleList}>
-        {posts.map((post) => {
+        {posts.map(post => {
           return (
             <li key={post.slug}>
               <Link to={`/blog/${post.slug}`} className={styles.link}>
