@@ -18,13 +18,13 @@ pre-commit:
   parallel: true
   commands:
     prettier:
-      glob: ".{js,ts}"
+      glob: "*.{js,ts}"
       run: "npm run prettier"
     lint:
-      glob: ".{js,ts}"
+      glob: "*.{js,ts}"
       run: "npm run lint"
     jest:
-      glob: ".{js,ts}"
+      glob: "*.{js,ts}"
       run: "npm run test"
     rubocop:
       tags: backend style
