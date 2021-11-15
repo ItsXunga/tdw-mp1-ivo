@@ -1,13 +1,11 @@
 image: node:lts
 
 stages:
-  - build
+  - setup
 
   - test
 
-  - compile
-
-  - deploy
+  - build/deploy
 
 variables:
   FF_USE_FASTZIP: "true"
@@ -24,7 +22,7 @@ cache:
       - node_modules/
 
 install:
-  stage: build
+  stage: setup
 
   script:
     - npm install
@@ -33,44 +31,21 @@ install:
     paths:
       - node_modules/
 
-prettier:
+prettier/lint/jest:
   stage: test
 
   script:
     - npm run prettier
-
-  allow_failure: false
-
-lint:
-  stage: test
-
-  script:
     - npm run lint
-
-  allow_failure: false
-
-jest:
-  stage: test
-
-  script:
     - npm run test
 
   allow_failure: false
 
-compile:
-  stage: compile
+build/deploy:
+  stage: build/deploy
 
   script: 
     - npm run build
-
-  rules:
-    - if: '$CI_COMMIT_BRANCH == "master"'
-    - when: always
-
-deploy:
-  stage: deploy
-
-  script: 
     - npx netlify-cli deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --prod
 
   rules:
