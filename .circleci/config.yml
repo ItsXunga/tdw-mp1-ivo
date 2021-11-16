@@ -48,10 +48,6 @@ jobs:
     docker:
       - image: cimg/node:17.1.0
 
-    branches:
-      only:
-      - master
-
     steps:
       - checkout
       - run: npm install
