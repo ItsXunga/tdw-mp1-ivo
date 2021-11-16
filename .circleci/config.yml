@@ -84,4 +84,4 @@ workflows:
               only:
                 - master
     jobs:
-      - prettier                       
+      - build_and_test                    
