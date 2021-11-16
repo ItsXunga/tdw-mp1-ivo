@@ -54,7 +54,8 @@ jobs:
       - run: 
           command: npm run build
       - run:
-          command: npx netlify-cli deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --prod     
+          command: npx netlify-cli deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --prod
+      - run: echo "Está feito pá. Boa cena" 
 # Orchestrate our job run sequence
 workflows:
   build_and_test:
