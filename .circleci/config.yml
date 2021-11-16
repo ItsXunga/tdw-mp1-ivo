@@ -55,8 +55,16 @@ jobs:
           command: npm run build
       - run:
           command: npx netlify-cli deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --prod
+
+  alert:
+    docker:
+    - image: cimg/node:17.1.0
+
+    steps:
+      - checkout
+      - node/install-paackages
       - run: 
-          command: echo "Está feito pá. Boa cena" 
+          command: echo "Está feito pá. Boa cena"       
 # Orchestrate our job run sequence
 workflows:
   build_and_test:
@@ -80,6 +88,9 @@ workflows:
             branches:
               only:
                 - master
+      - alert:
+          requires:
+            - deploy
   schedule:
     triggers:
       - schedule:
