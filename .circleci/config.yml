@@ -7,7 +7,7 @@ orbs:
 
 # Define the jobs we want to run for this project
 jobs:
-  install:
+  build:
     docker:
       - image: cimg/node:17.1.0
 
@@ -29,7 +29,7 @@ jobs:
 
 # Orchestrate our job run sequence
 workflows:
-  build_and_test:
+  build:
     jobs:
       - install
       - prettier:
