@@ -50,8 +50,10 @@ jobs:
 
     steps:
       - checkout
-      - run: npm run build
-      - run: npx netlify-cli deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --prod
+      - node/install-packages
+      - run: 
+          command: npm run build
+                   npx netlify-cli deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --prod
 
 # Orchestrate our job run sequence
 workflows:
@@ -69,4 +71,6 @@ workflows:
             - install
       - build/deploy:
           requires:
+            - prettier
+            - jest
             - lint
