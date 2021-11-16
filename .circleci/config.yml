@@ -50,8 +50,9 @@ jobs:
 
     steps:
       - checkout
-      - run: npm install
-      - run: npx netlify-cli deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --prod
+      - run: 
+          command: npm install
+          command: npx netlify-cli deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --prod
 
 # Orchestrate our job run sequence
 workflows:
