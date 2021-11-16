@@ -78,7 +78,7 @@ workflows:
             branches:
               only:
                 - master
-  nightly:
+  schedule:
     triggers:
       - schedule:
           cron: "0 15 * * *"
