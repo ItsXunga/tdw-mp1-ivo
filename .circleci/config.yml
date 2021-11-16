@@ -75,3 +75,11 @@ workflows:
             - prettier
             - jest
             - lint
+  nightly:
+    triggers:
+      - schedule:
+          cron: "0 0 * * *"
+          filters:
+            branches:
+              only:
+                - master           
