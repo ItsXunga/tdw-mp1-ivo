@@ -69,6 +69,4 @@ workflows:
             - install
       - build/deploy:
           requires:
-            - prettier
-            - jest
             - lint
