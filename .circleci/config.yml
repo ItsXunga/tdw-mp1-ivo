@@ -62,9 +62,9 @@ jobs:
 
     steps:
       - checkout
-      - node/install-paackages
       - run: 
           command: echo "Está feito pá. Boa cena"       
+          
 # Orchestrate our job run sequence
 workflows:
   build_and_test:
