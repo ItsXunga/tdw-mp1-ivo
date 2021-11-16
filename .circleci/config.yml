@@ -7,6 +7,55 @@ orbs:
 
 # Define the jobs we want to run for this project
 jobs:
+  install:
+    docker:
+      - image: cimg/node:17.1.0
+
+    steps:
+      - checkout
+      - run: npm install
+  prettier:
+    docker:
+      - image: cimg/node:17.1.0
+
+    steps:
+      - checkout
+      - node/install-packages
+      - run:
+          command: npm run prettier
+
+  jest:
+    docker:
+      - image: cimg/node:17.1.0
+
+    steps:
+      - checkout
+      - node/install-packages
+      - run:
+          command: npm run test
+
+  lint:
+    docker:
+      - image: cimg/node:17.1.0
+
+    steps:
+      - checkout
+      - node/install-packages
+      - run:
+          command: npm run lint
+
+  deploy:
+    docker:
+      - image: cimg/node:17.1.0
+
+    steps:
+      - checkout
+      - node/install-packages
+      - run: 
+          command: npm run build
+      - run:
+          command: npx netlify-cli deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --prod
+
   build:
     docker:
       - image: cimg/node:17.1.0
@@ -25,7 +74,8 @@ jobs:
       - run:
           command: npm run build
       - run:
-          command: npx netlify-cli deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --prod
+          command: npx netlify-cli deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --prod      
+  
 
 # Orchestrate our job run sequence
 workflows:
