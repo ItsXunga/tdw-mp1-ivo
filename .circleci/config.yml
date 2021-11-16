@@ -84,4 +84,8 @@ workflows:
               only:
                 - master
     jobs:
-      - build_and_test                    
+      - install
+      - prettier
+      - jest
+      - lint
+      - deploy                 
