@@ -44,7 +44,7 @@ jobs:
       - run:
           command: npm run lint
 
-  build/deploy:
+  deploy:
     docker:
       - image: cimg/node:17.1.0
 
@@ -70,7 +70,7 @@ workflows:
       - lint:
           requires:
             - install
-      - build/deploy:
+      - deploy:
           requires:
             - prettier
             - jest
