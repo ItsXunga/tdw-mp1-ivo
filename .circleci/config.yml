@@ -84,4 +84,4 @@ workflows:
               only:
                 - master
     jobs:
-      - coverage                       
+      - prettier                       
