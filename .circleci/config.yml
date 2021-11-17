@@ -100,9 +100,6 @@ workflows:
             branches:
               only:
                 - master
-      - verify:
-          requires:
-            - deploy
   schedule:
     triggers:
       - schedule:
